@@ -8,7 +8,6 @@ public class Mapper {
         public static void toDTO(User user, FindUserResponse response){
             response.setFullName(user.getFullName());
             response.setDateOfBirth(user.getDateOfBirth());
-            response.setEmail(user.getEmail());
             response.setDateOfLastPeriod(user.getDateOfLastPeriod());
             response.setLengthOfCycle(user.getLengthOfCycle());
             response.setLengthOfPeriod(user.getLengthOfPeriod());
@@ -20,6 +19,7 @@ public class Mapper {
             user.setDateOfBirth(createUserRequest.getDateOfBirth());
             user.setEmail(createUserRequest.getEmail());
             user.setPassword(createUserRequest.getPassword());
+            user.setUsername(createUserRequest.getUsername());
             user.setDateOfLastPeriod(createUserRequest.getDateOfLastPeriod());
             user.setLengthOfCycle(createUserRequest.getLengthOfCycle());
             user.setLengthOfPeriod(createUserRequest.getLengthOfPeriod());

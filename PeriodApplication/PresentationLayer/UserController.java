@@ -1,7 +1,6 @@
 package PeriodApplication.PresentationLayer;
 
 import PeriodApplication.DTOs.CreateUserRequest;
-import PeriodApplication.DataLayer.Model.User;
 import PeriodApplication.ServiceLayer.UserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,20 +10,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.NoSuchElementException;
 
 @RestController
+@RequestMapping("/menstrualApp/register")
     public class UserController {
 
         @Autowired
         private UserServiceInterface userService;
 
-        @PostMapping("/menstrualApp/register")
+        @PostMapping
         public ResponseEntity<?> createUser(@RequestBody CreateUserRequest createUserRequest) {
             try {
                 return new ResponseEntity<>(userService.createAccount(createUserRequest), HttpStatus.CREATED);
             } catch (IllegalArgumentException ex) {
-                return new ResponseEntity<>(ex.getMessage(), HttpStatus.SERVICE_UNAVAILABLE);
+                return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
             }
         }
-
 
         @GetMapping("/menstrualApp/findUser/{id}")
         public Object findUserById(@PathVariable String id) {
@@ -48,7 +47,7 @@ import java.util.NoSuchElementException;
 
         }
 
-        public void deleteAccount(User user){
-            userService.deleteAccount(user);
+        public void deleteAccount(String id){
+            userService.deleteAccount(id);
         }
 }

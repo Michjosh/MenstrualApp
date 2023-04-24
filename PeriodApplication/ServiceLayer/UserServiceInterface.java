@@ -7,8 +7,9 @@ import PeriodApplication.DataLayer.Model.User;
 public interface UserServiceInterface {
 
         User createAccount(CreateUserRequest createUserRequest);
+        User updateUserDetails(CreateUserRequest request, String username);
         void login(String id);
-        void deleteAccount(User user);
+        void deleteAccount(String id);
         FindUserResponse findUserById(String id);
         void findByUserName(String username);
 }

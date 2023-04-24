@@ -15,7 +15,8 @@ public class User {
     private LocalDate dateOfBirth;
     private String email;
     private String password;
-    private LocalDate dateOfLastPeriod;
+    private String username;
+    private CharSequence dateOfLastPeriod;
     private int lengthOfCycle;
     private int lengthOfPeriod;
 }
